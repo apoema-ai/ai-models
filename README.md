@@ -2,7 +2,7 @@
 
 Mirror of [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) streaming Zipformer speech models used by **Lumiquo**, **Teramigo** and **Exatiq**.
 
-Binaries are served via **Cloudflare R2** (object keys `<tag>/<file>`, public custom domain) and mirrored on **GitHub Releases** as a fallback source.
+Binaries are served via **Cloudflare R2** (object keys `<tag>/<file>`, public bucket) and mirrored on **GitHub Releases** as a fallback/provenance source.
 
 ## Releases
 
@@ -19,7 +19,7 @@ Download URL patterns:
 
 ```
 # Primary: Cloudflare R2 public bucket
-https://<PUBLIC_BASE_URL>/<tag>/<file>
+https://pub-4306ea5239cd4c7ca303694014747b42.r2.dev/<tag>/<file>
 
 # Fallback: GitHub Releases
 https://github.com/apoema-ai/ai-models/releases/download/<tag>/<file>
@@ -39,6 +39,6 @@ go run tool/upload_r2.go /path/to/staged/models
 ```
 
 Object keys preserve the `<tag>/<file>` layout, so the public URL
-`https://<PUBLIC_BASE_URL>/<tag>/<file>` is a drop-in replacement for the
-GitHub Releases URL. Apps pin each file's SHA-256, so re-uploads must be
-byte-identical.
+`https://pub-4306ea5239cd4c7ca303694014747b42.r2.dev/<tag>/<file>` is a
+drop-in replacement for the GitHub Releases URL. Apps pin each file's
+SHA-256, so re-uploads must be byte-identical.
